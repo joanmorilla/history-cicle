@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfiynsv77aatv"]
+[gd_scene load_steps=4 format=3 uid="uid://cfiynsv77aatv"]
 
 [ext_resource type="PackedScene" uid="uid://ct28rqjbjv664" path="res://TurnQueue.tscn" id="1_ek1f7"]
 [ext_resource type="PackedScene" uid="uid://bocbqw2n2nayw" path="res://CombatUI.tscn" id="1_np1bv"]
-[ext_resource type="Texture2D" uid="uid://t6wxwomwm6j6" path="res://icon.svg" id="2_xw3y4"]
-[ext_resource type="Script" path="res://Character.gd" id="3_wrkoe"]
+[ext_resource type="PackedScene" uid="uid://ced7xyaeu5s58" path="res://Character.tscn" id="3_w73xg"]
 
 [node name="CombatArena" type="Node2D"]
 
@@ -12,30 +11,19 @@
 [node name="CombatUI" parent="GUI" node_paths=PackedStringArray("turn_queue") instance=ExtResource("1_np1bv")]
 turn_queue = NodePath("../../TurnQueue")
 
-[node name="TurnQueue" parent="." instance=ExtResource("1_ek1f7")]
+[node name="TurnQueue" parent="." node_paths=PackedStringArray("comabat_ui") instance=ExtResource("1_ek1f7")]
+comabat_ui = NodePath("../GUI/CombatUI")
 
-[node name="Char1" type="Sprite2D" parent="TurnQueue"]
-position = Vector2(860, 88)
-texture = ExtResource("2_xw3y4")
-script = ExtResource("3_wrkoe")
+[node name="Character" parent="TurnQueue" instance=ExtResource("3_w73xg")]
+position = Vector2(826, 154)
 
-[node name="Char2" type="Sprite2D" parent="TurnQueue"]
-position = Vector2(868, 221)
-texture = ExtResource("2_xw3y4")
-script = ExtResource("3_wrkoe")
+[node name="Character2" parent="TurnQueue" instance=ExtResource("3_w73xg")]
+position = Vector2(822, 392)
 
-[node name="Char3" type="Sprite2D" parent="TurnQueue"]
-position = Vector2(870, 361)
-texture = ExtResource("2_xw3y4")
-script = ExtResource("3_wrkoe")
+[node name="Enemy" parent="TurnQueue" instance=ExtResource("3_w73xg")]
+position = Vector2(155, 140)
+scale = Vector2(2, 2)
 
-[node name="Char4" type="Sprite2D" parent="TurnQueue"]
-position = Vector2(863, 496)
-texture = ExtResource("2_xw3y4")
-script = ExtResource("3_wrkoe")
-
-[node name="Enemy" type="Sprite2D" parent="TurnQueue"]
-position = Vector2(290, 244)
-scale = Vector2(3, 3)
-texture = ExtResource("2_xw3y4")
-script = ExtResource("3_wrkoe")
+[node name="Enemy2" parent="TurnQueue" instance=ExtResource("3_w73xg")]
+position = Vector2(435, 365)
+scale = Vector2(2, 2)
